@@ -1,26 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            font-size: 18px;
-        }
-    </style>
+    <title>Portfólio - Seu Nome</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Bem-vindo ao meu site!</h1>
-    <p>Este é um teste de hospedagem no GitHub Pages.</p>
+<body class="dark">
+    <header class="header">
+        <h1 class="header-title">Seu Nome</h1>
+        <p class="header-subtitle">Desenvolvedor | Criador de Soluções</p>
+        <button id="toggle-theme" class="theme-toggle">
+            <i id="theme-icon" class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <section class="portfolio">
+            <h2 class="section-title">Projetos</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h3>Projeto 1</h3>
+                    <p>Descrição do Projeto 1.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Projeto 2</h3>
+                    <p>Descrição do Projeto 2.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Projeto 3</h3>
+                    <p>Descrição do Projeto 3.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Projeto 4</h3>
+                    <p>Descrição do Projeto 4.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2 class="section-title">Contato</h2>
+            <div class="social-links">
+                <a href="https://x.com/seuusuario" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/seuusuario" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:seuemail@dominio.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Seu Nome. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
