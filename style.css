@@ -1,78 +1,65 @@
-/* Estilos gerais */
+/* Fundo e estilo geral */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top, #ffe6f0, #ffd6eb);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Cabeçalho */
-header {
-    background: #1f1f1f;
-    padding: 20px;
+/* Container central */
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2em;
-    color: #00d4ff;
+h1 {
+  font-size: 3em;
+  color: #ff4081;
+  text-shadow: 2px 2px #fff;
+  animation: pulse 2s infinite;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+.heart {
+  animation: blink 1s infinite;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+/* Animações */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-nav ul li a {
-    color: #00d4ff;
-    text-decoration: none;
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
-/* Seção de Projetos */
-#projects {
-    padding: 50px 20px;
+/* Corações animados */
+.heart-float {
+  position: absolute;
+  color: #ff69b4;
+  font-size: 24px;
+  animation: float 5s linear infinite;
+  user-select: none;
+  pointer-events: none;
 }
 
-.project {
-    background: #1f1f1f;
-    margin: 20px auto;
-    padding: 15px;
-    max-width: 500px;
-    border-radius: 8px;
-}
-
-.project a {
-    display: block;
-    margin-top: 10px;
-    color: #00d4ff;
-    text-decoration: none;
-}
-
-/* Rodapé */
-footer {
-    background: #1f1f1f;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-footer .social-links {
-    margin: 10px 0;
-}
-
-footer .social-links a {
-    color: #00d4ff;
-    font-size: 24px;
-    margin: 0 15px;
-    text-decoration: none;
-}
-
-footer .social-links a:hover {
-    color: #ffffff;
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
 }
