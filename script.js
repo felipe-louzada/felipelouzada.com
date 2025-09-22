@@ -1,12 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const text = "Cientista de Dados em formação";
-    let index = 0;
-    function typeEffect() {
-        document.getElementById("typing-text").textContent = text.substring(0, index);
-        index++;
-        if (index <= text.length) {
-            setTimeout(typeEffect, 100);
-        }
-    }
-    typeEffect();
-});
+// Gera corações flutuantes
+function createFloatingHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart-float');
+  heart.textContent = '💗';
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+// Cria vários corações continuamente
+setInterval(createFloatingHeart, 300);
