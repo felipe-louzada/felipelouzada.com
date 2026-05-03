@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Felipe Louzada — Cientista de Dados</title>
+  <meta name="description" content="Felipe Louzada — Cientista de Dados especializado em análise exploratória, machine learning e visualização de dados." />
+
+  <!--Meu Ícone-->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230d0b09'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='bold' fill='%23c8a96e'>FL</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0b09; --paper: #111009; --ink: #e8e0d0;
+      --ink-muted: #8a8070; --accent: #c8a96e;
+      --accent-dim: #7a6340; --rule: #2a2520;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; line-height: 1.7;
+      overflow-x: hidden; cursor: auto;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035; pointer-events: none; z-index: 1000;
+    }
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem; border-bottom: 1px solid var(--rule);
+      background: rgba(13,11,9,0.88); backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-muted); text-decoration: none; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    #home {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 8rem 4rem 4rem;
+      border-bottom: 1px solid var(--rule);
+      position: relative; overflow: hidden;
+    }
+    .hero-section-num {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      color: var(--accent); letter-spacing: 0.2em;
+      margin-bottom: 1.2rem;
+    }
+    .hero-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-tag::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 900; line-height: 0.95; letter-spacing: -0.02em;
+      color: var(--ink); margin-bottom: 0.3rem;
+    }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-style: italic; font-weight: 300;
+      color: var(--ink-muted); margin-top: 1.5rem; margin-bottom: 2.5rem;
+      max-width: 38ch; line-height: 1.5;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 1rem;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none;
+      border: 1px solid var(--accent-dim); padding: 0.9rem 2rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .hero-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.35s ease;
+    }
+    .hero-cta:hover::before { transform: scaleX(1); }
+    .hero-cta span { position: relative; z-index: 1; }
+    .hero-cta:hover { color: var(--bg); border-color: var(--accent); }
+    .hero-right {
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 1.5rem; padding-left: 4rem;
+    }
+    .hero-photo-wrap {
+      position: relative; width: 100%; max-width: 360px;
+      animation: fadeIn 1.2s ease 0.4s forwards; opacity: 0;
+    }
+    .hero-photo-wrap::before, .hero-photo-wrap::after {
+      content: ''; position: absolute;
+      width: 20px; height: 20px;
+      border-color: var(--accent); border-style: solid; z-index: 2;
+    }
+    .hero-photo-wrap::before { top: -8px; left: -8px; border-width: 1px 0 0 1px; }
+    .hero-photo-wrap::after  { bottom: -8px; right: -8px; border-width: 0 1px 1px 0; }
+    .corner-tr, .corner-bl {
+      position: absolute; width: 20px; height: 20px;
+      border-color: var(--accent); border-style: solid; z-index: 2;
+    }
+    .corner-tr { top: -8px; right: -8px; border-width: 1px 1px 0 0; }
+    .corner-bl { bottom: -8px; left: -8px; border-width: 0 0 1px 1px; }
+    .hero-photo {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: center top; display: block;
+      filter: none; transition: filter 0.6s ease;
+    }
+    .hero-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,11,9,0.65) 0%, rgba(13,11,9,0.1) 45%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-photo-caption {
+      position: absolute; bottom: 1rem; left: 1rem;
+      font-family: 'DM Mono', monospace; font-size: 0.55rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-muted); z-index: 1;
+    }
+    .hero-rule {
+      width: 100%; height: 1px; background: var(--rule);
+      animation: expandWidth 1s ease 0.6s forwards;
+      transform: scaleX(0); transform-origin: right;
+    }
+    .hero-stats { display: flex; gap: 3rem; align-self: flex-end; }
+    .stat { text-align: right; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--ink); }
+    .stat-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted); }
+    section { padding: 6rem 4rem; }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem;
+    }
+    .section-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent); letter-spacing: 0.2em; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: var(--ink); flex: 1; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    #projetos { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--rule); }
+    .project-card {
+      background: var(--bg); padding: 2.5rem;
+      position: relative; overflow: hidden;
+      transition: background 0.35s;
+      display: flex; flex-direction: column; min-height: 280px;
+    }
+    .project-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 2px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+    }
+    .project-card:hover { background: #13110e; }
+    .project-card:hover::after { transform: scaleX(1); }
+    .project-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--accent-dim); letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+    .project-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 0.8rem; line-height: 1.2; }
+    .project-desc { font-size: 1rem; color: var(--ink-muted); line-height: 1.6; flex: 1; margin-bottom: 2rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-dim); border: 1px solid var(--accent-dim); padding: 0.25rem 0.6rem; }
+    .project-link { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; align-self: flex-start; transition: gap 0.3s; }
+    .project-link:hover { gap: 1rem; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contact-text h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; font-style: italic; color: var(--ink); margin-bottom: 1rem; line-height: 1.2; }
+    .contact-text p { font-size: 1rem; color: var(--ink-muted); max-width: 38ch; margin-bottom: 2.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; transition: color 0.3s, border-color 0.3s; }
+    .contact-link:hover { color: var(--accent); border-color: var(--accent-dim); }
+    .link-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted); min-width: 5rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+    .form-group label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted); display: block; margin-bottom: 0.5rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; background: transparent; border: none;
+      border-bottom: 1px solid var(--rule); padding: 0.7rem 0;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+      color: var(--ink); outline: none; transition: border-color 0.3s; resize: none;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { height: 100px; }
+    .form-submit {
+      align-self: flex-start;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--bg); background: var(--accent);
+      border: none; padding: 1rem 2.5rem;
+      cursor: pointer; transition: background 0.3s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--ink); transform: translateY(-2px); }
+    footer {
+      border-top: 1px solid var(--rule); padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--ink-muted); text-transform: uppercase; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; font-style: italic; color: var(--rule); user-select: none; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes expandWidth { to { transform: scaleX(1); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); }
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      #home { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+      .hero-right { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="#home" class="nav-logo">Felipe Louzada</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-section-num">01</div>
+    <div class="hero-tag">Cientista de Dados</div>
+    <h1 class="hero-title">Transformo<br>dados em<br><em>decisões.</em></h1>
+    <p class="hero-subtitle">Exploro, modelo e visualizo dados para transformar informação bruta em insights que geram impacto real.</p>
+    <a href="#projetos" class="hero-cta"><span>Ver projetos</span><span>→</span></a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <span class="corner-tr"></span>
+      <span class="corner-bl"></span>
+      <img class="hero-photo" src="IMG20231105120150.jpg" alt="Felipe Louzada" />
+      <div class="hero-photo-overlay"></div>
+      <span class="hero-photo-caption">Felipe Louzada</span>
+    </div>
+    <div class="hero-rule"></div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projetos</div></div>
+      <div class="stat"><div class="stat-num">1+</div><div class="stat-label">Anos exp.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Projetos <em>selecionados</em></h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-num">001</div>
+      <h3 class="project-title">Análise de Churn de Clientes</h3>
+      <p class="project-desc">Modelo preditivo para identificar clientes com risco de cancelamento, combinando análise exploratória e machine learning para gerar estratégias de retenção.</p>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span></div>
+      <a href="projeto1.html" class="project-link">Ver projeto →</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">002</div>
+      <h3 class="project-title">Dashboard de Vendas</h3>
+      <p class="project-desc">Painel interativo de visualização de dados de vendas com análise de tendências, sazonalidade e KPIs em tempo real para suporte à decisão.</p>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">Matplotlib</span><span class="tag">SQL</span></div>
+      <a href="projeto2.html" class="project-link">Ver projeto →</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">003</div>
+      <h3 class="project-title">Previsão de Séries Temporais</h3>
+      <p class="project-desc">Aplicação de modelos de forecasting para prever demanda futura com base em dados históricos, utilizando técnicas estatísticas e redes neurais.</p>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">Statsmodels</span><span class="tag">Jupyter</span></div>
+      <a href="projeto3.html" class="project-link">Ver projeto →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Vamos <em>conversar</em></h2>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-text reveal">
+      <h3>"Bons insights começam com as perguntas certas."</h3>
+      <p>Estou aberto a novas oportunidades, freelas e colaborações. Se tiver uma ideia, me chama.</p>
+      <div class="contact-links">
+        <a href="mailto:contato@felipelouzada.com" class="contact-link"><span class="link-label">Email</span>contato@felipelouzada.com</a>
+        <a href="https://github.com/felipe-louzada" class="contact-link" target="_blank"><span class="link-label">GitHub</span>github.com/felipe-louzada</a>
+        <a href="https://www.linkedin.com/in/felipellouzada/" class="contact-link" target="_blank"><span class="link-label">LinkedIn</span>linkedin.com/in/felipellouzada</a>
+      </div>
+    </div>
+
+    <form
+      class="contact-form reveal"
+      action="https://formspree.io/f/mrejenov"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="Nova mensagem do portfólio — Felipe Louzada" />
+      <input type="hidden" name="_next" value="obrigado.html" />
+      <div class="form-group"><label>Nome</label><input type="text" name="name" placeholder="Seu nome" required /></div>
+      <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="seu@email.com" required /></div>
+      <div class="form-group"><label>Mensagem</label><textarea name="message" placeholder="Conversar..." required></textarea></div>
+      <button type="submit" class="form-submit">Enviar mensagem</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 — Felipe Louzada</span>
+  <span class="footer-logo">FL</span>
+  <span class="footer-copy">Feito com cuidado</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 120);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
